@@ -29,11 +29,11 @@ buttonOperation.forEach(function(button){
 });
 
 buttonDelete.addEventListener('click', function(){
-    clearInterval();
+    clear();
     updateDisplay();
 });
 
-//llamando a la funcion agregar numero
+//MEtodo agregar numero
 
 function addNumber(num){
     //sumar valor del string anterior con el nuevo string
@@ -41,7 +41,17 @@ function addNumber(num){
     //concatenacion de los numeros
     updateDisplay();
 }
+//Metodo para limpiar la pantalla
+
+function clear(){
+    currentOperation = '';
+    prevOperation = '';
+    operation = undefined;
+}
 
 function updateDisplay(){
     result.value = currentOperation;
 };
+
+//llamar al metodo clear cada vez que actualizo
+clear();
