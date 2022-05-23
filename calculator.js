@@ -33,6 +33,44 @@ buttonDelete.addEventListener('click', function(){
     updateDisplay();
 });
 
+//Metodo de calcular
+
+function calcular(){
+    var calcularNumero;
+    const previous = parseFloat(prevOperation);
+    const actual = parseFloat(currentOperation); 
+    if (isNaN(previous) || isNaN(actual)) return;
+
+    switch(operation){
+
+        case '+':
+            calcularNumero = previous + actual;
+            break;
+        
+        case '-':
+            calcularNumero = previous - actual;
+            break;
+
+        case 'x':
+            calcularNumero = previous * actual;
+            break;
+
+        case '/':
+            calcularNumero = previous / actual;
+            break;
+
+        default:
+            return;
+    }
+
+    currentOperation = calcularNumero;
+
+    operation = undefined;
+
+    prevOperation = '';
+}
+
+
 //MEtodo agregar numero
 
 function addNumber(num){
@@ -41,6 +79,20 @@ function addNumber(num){
     //concatenacion de los numeros
     updateDisplay();
 }
+
+
+function selectOperation(op){
+    // Si la operacion actual es igual a nada no hacer nada
+    if(currentOperation === '') return;
+    
+    if(prevOperation !==''){
+        calcular()
+    }
+    operation = op.toString();
+    prevOperation = currentOperation;
+    currentOperation = '';
+}
+
 //Metodo para limpiar la pantalla
 
 function clear(){
